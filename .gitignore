@@ -1,0 +1,16 @@
+#builds and tmps
+public/*
+!public/.htaccess
+!public/images
+node_modules
+npm-debug.log
+
+#tmp OS file system
+.DS_Store
+
+#tmp IDE files
+.idea/
+
+#apache
+access.log
+error.log
