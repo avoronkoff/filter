@@ -23,7 +23,7 @@ export default class Filter extends Component {
                 </FormGroup>
                 <FormGroup>
                     <Col md={4}>
-                        <Button name="month" value={date.getMonth()} color="success" onClick={searchHandle}>За последний месяц</Button>
+                        <Button name="month" value={date.getMonth() + 1} color="success" onClick={searchHandle}>За последний месяц</Button>
                     </Col>
                 </FormGroup>
             </Form>
