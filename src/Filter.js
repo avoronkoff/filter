@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Form, FormGroup, Input, Col, Button } from 'reactstrap';
+import { Form, FormGroup, Col, Button } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 //import styles
@@ -7,23 +7,27 @@ import './style.css';
 
 export default class Filter extends Component {
     render() {
-        let date = new Date();
-        const { searchHandle } = this.props;
+        const { searchHandle, disabledButton } = this.props;
         return (
             <Form inline>
                 <FormGroup>
                     <Col md={4}>
-                        <Input name="search" type="text" onChange={searchHandle} placeholder="поиск по типу" />
+                        <Button name="moreThousand"  color="primary" onClick={searchHandle}>больше 1000</Button>
                     </Col>
                 </FormGroup>
                 <FormGroup>
                     <Col md={4}>
-                        <Button name="higher" value="50" color="primary" onClick={searchHandle}>Сумма больше 50</Button>
+                        <Button name="income"  color="primary" onClick={searchHandle} disabled={disabledButton.expense}>доход</Button>
                     </Col>
                 </FormGroup>
                 <FormGroup>
                     <Col md={4}>
-                        <Button name="month" value={date.getMonth() + 1} color="success" onClick={searchHandle}>За последний месяц</Button>
+                        <Button name="expense"  color="primary" onClick={searchHandle} disabled={disabledButton.income}>расход</Button>
+                    </Col>
+                </FormGroup>
+                <FormGroup>
+                    <Col md={4}>
+                        <Button name="month"  color="success" onClick={searchHandle}>За последний месяц</Button>
                     </Col>
                 </FormGroup>
             </Form>
