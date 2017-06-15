@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Container, Row, Col  } from 'reactstrap';
+import { Map } from 'immutable';
 
 //import view
 import Filter from './Filter';
@@ -8,12 +9,12 @@ export default class TableData extends Component {
     constructor(props) {
         super(props);
         this.state = ({
-            searchObj: {
+            searchObj: Map({
                 'moreThousand': false,
                 'expense': false,
                 'income': false,
                 'month': false
-            },
+            }),
             originList: [...this.props.list],
             list: this.props.list
         });
@@ -22,13 +23,9 @@ export default class TableData extends Component {
     searchHandle = (e) => {
         e.preventDefault();
 
-        const search = this.state.searchObj;
-        search[e.target.name] = !search[e.target.name];
-
         this.setState({
-            ...this.state.searchObj,
-            [e.target.name] : search[e.target.name]
-        }, () => this.filterTable(this.state.searchObj));
+            searchObj: this.state.searchObj.update(e.target.name, value => !value)
+        }, () => this.filterTable(this.state.searchObj.toJS()));
 
     };
 
@@ -73,7 +70,7 @@ export default class TableData extends Component {
             <Container>
                 <Row>
                     <Col md={12}>
-                        <Filter searchHandle={this.searchHandle} disabledButton={searchObj} />
+                        <Filter searchHandle={this.searchHandle} settingButton={searchObj.toJS()} />
                         <Table striped>
                             <thead>
                                 <tr>
