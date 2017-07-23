@@ -13,7 +13,7 @@ export default class Filter extends Component {
                 <FormGroup>
                     <Col md={4}>
                         <Button name="moreThousand"  color={settingButton.moreThousand ? "warning" : "primary"}
-                                onClick={searchHandle}>больше 1000</Button>
+                                onClick={searchHandle}>Больше 1000</Button>
                     </Col>
                 </FormGroup>
                 <FormGroup>
